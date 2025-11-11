@@ -21,8 +21,8 @@ jobs:
       - name: An Test
         id: testing
         run: |
-          contents="$(ls -al)"
-          echo "output-value=${contents}" >> "${GITHUB_OUTPUT}"
+          ls -alh
+          echo "output-value=this is some output" >> "${GITHUB_OUTPUT}"
           echo "secret-value=${secret}" >> "${GITHUB_OUTPUT}"
         env:
           secret: ${{ secrets.TEST_SECRET }}
