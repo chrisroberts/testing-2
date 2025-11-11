@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Doing testing
     steps:
-      - uses: actions/checkout
+      - uses: actions/checkout@v4
       - name: An Test
         id: testing
         run: |
