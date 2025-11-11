@@ -26,3 +26,6 @@ jobs:
           echo "secret-value=${secret}" >> "${GITHUB_OUTPUT}"
         env:
           secret: ${{ secrets.TEST_SECRET }}
+    outputs:
+      output-value: ${{ steps.testing.outputs.output-value }}
+      secret-value: ${{ steps.testing.outputs.secret-value }}
