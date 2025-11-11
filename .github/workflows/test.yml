@@ -1,0 +1,28 @@
+on:
+  workflow_call:
+    inputs:
+      test-value:
+        description: A test
+        type: string
+    outputs:
+      output-value:
+        description: an output
+        value: ${{ jobs.testing.outputs.output-value }}
+      secret-value:
+        description: a secret
+        value: ${{ jobs.testing.outputs.secret-value }}
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    name: Doing testing
+    steps:
+      - uses: actions/checkout
+      - name: An Test
+        id: testing
+        run: |
+          contents="$(ls -al)"
+          echo "output-value=${contents}" >> "${GITHUB_OUTPUT}"
+          echo "secret-value=${secret}" >> "${GITHUB_OUTPUT}"
+        env:
+          secret: ${{ secrets.TEST_SECRET }}
